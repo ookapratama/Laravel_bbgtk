@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Contracts;
 
-interface BaseRepositoryInterface
+interface BaseInterface
 {
   /**
    * Get all records

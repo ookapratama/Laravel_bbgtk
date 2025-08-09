@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\Contracts\BaseRepositoryInterface;
+use App\Repositories\Contracts\BaseInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -11,7 +11,7 @@ class BaseService
 {
   protected $repository;
 
-  public function __construct(BaseRepositoryInterface $repository)
+  public function __construct(BaseInterface $repository)
   {
     $this->repository = $repository;
   }

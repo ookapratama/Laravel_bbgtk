@@ -7,6 +7,10 @@ use Illuminate\Support\Str;
 
 class Helpers
 {
+  public static function title($value)
+  {
+    return Str::remove(' ', ucwords(Str::of($value)->replace('_', ' ')));
+  }
   public static function appClasses()
   {
 
@@ -110,7 +114,7 @@ class Helpers
         $styleVal = $_COOKIE[$modeCookieName];
         if ($styleVal === 'system') {
           $styleVal = isset($_COOKIE[$colorPrefCookieName]) ? $_COOKIE[$colorPrefCookieName] : 'light';
-          }
+        }
         $styleUpdatedVal = $_COOKIE[$modeCookieName];
       }
     }
@@ -129,7 +133,7 @@ class Helpers
       'styleOptVal' => $styleUpdatedVal,
       'rtlSupport' => $data['myRTLSupport'],
       'rtlMode' => $data['myRTLMode'],
-      'textDirection' => $directionVal,//$data['myRTLMode'],
+      'textDirection' => $directionVal, //$data['myRTLMode'],
       'menuCollapsed' => $data['menuCollapsed'],
       'hasCustomizer' => $data['hasCustomizer'],
       'showDropdownOnHover' => $data['showDropdownOnHover'],
@@ -191,11 +195,9 @@ class Helpers
     if ($layoutClasses['rtlMode'] == true) {
       $layoutClasses['rtlMode'] = 'rtl';
       $layoutClasses['textDirection'] = isset($_COOKIE['direction']) ? ($_COOKIE['direction'] === "true" ? 'rtl' : 'ltr') : 'rtl';
-
     } else {
       $layoutClasses['rtlMode'] = 'ltr';
       $layoutClasses['textDirection'] = isset($_COOKIE['direction']) && $_COOKIE['direction'] === "true" ? 'rtl' : 'ltr';
-
     }
 
     // Show DropdownOnHover for Horizontal Menu
